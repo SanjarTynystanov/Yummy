@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import RecipeDetails from './pages/RecipeDetails';
@@ -10,6 +10,7 @@ import About from './pages/about';
 import Contact from './pages/Contact';
 import Policy from './pages/Policy';
 import Register from './components/Register';
+import Profile from './components/Profile';
 import Login from './components/Login';
 
 
@@ -26,6 +27,14 @@ import Login from './components/Login';
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/profile"
+          element={
+            <Navigate>
+              <Profile />
+            </Navigate>
+          }
+        />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/blog" element={<Blog />} />

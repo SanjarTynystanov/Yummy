@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ function Register() {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +21,7 @@ function Register() {
     e.preventDefault();
     const { name, email, password, confirmPassword } = formData;
 
-    // Простая валидация
+    // Валидация
     if (!name || !email || !password || !confirmPassword) {
       setError('Пожалуйста, заполните все поля');
       return;
@@ -34,11 +35,23 @@ function Register() {
       return;
     }
 
-    console.log('Регистрация:', { name, email, password });
-    // Здесь будет логика отправки данных на сервер в будущем
+    // Проверка уникальности email
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.some(user => user.email === email)) {
+      setError('Этот email уже зарегистрирован');
+      return;
+    }
+
+    // Сохранение пользователя (имитация хэширования пароля)
+    const newUser = { name, email, password: btoa(password) }; // Простое кодирование base64
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('loggedInUser', JSON.stringify({ name, email }));
+
+    console.log('Регистрация:', { name, email });
     setFormData({ name: '', email: '', password: '', confirmPassword: '' });
     setError('');
-    alert('Регистрация успешна! (Загрузка)');
+    navigate('/profile');
   };
 
   return (

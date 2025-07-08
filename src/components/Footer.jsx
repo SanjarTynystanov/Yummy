@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <footer className="w-full bg-orange-400 text-white py-4 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-around items-center space-y-3 sm:space-y-0">
 
         {/* Навигация */}
         <nav className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 text-xs sm:text-sm">

@@ -238,17 +238,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-      {/* Футер */}
-      <footer className="text-center text-gray-600 py-7 px-4 bg-stone-50 rounded-2xl">
-        <p>© 2025 Yummy. Все права защищены.</p>
-        <div className="flex justify-center gap-8 mt-4 ">
-          <Link to="/about" className="hover:text-orange-400">О нас</Link>
-          <Link to="/contact" className="hover:text-orange-400">Контакты</Link>
-          <Link to="/policy" className="hover:text-orange-400">Политика конфиденциальности</Link>
-          <Link to="/favorites" className="hover:text-orange-400">Избранное</Link>
-        </div>
-      </footer>
     </div>
   );
 };
